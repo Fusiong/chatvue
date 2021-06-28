@@ -22,11 +22,7 @@ export default {
   },
   data() {
     return {
-      contact: null,
-      msgList: [],
-      url:"http://115.159.156.211:8081/message/getUnReadMessage/",
-      dialogVisible: false
-             
+      contact: null,        
     };
   },
   methods: {
