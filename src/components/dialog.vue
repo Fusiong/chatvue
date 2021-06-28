@@ -315,7 +315,6 @@ export default {
         .then((res) => {
           for (let item of res.data) {
             item.only = [that.contact.id, that.$store.getters.getid];
-
             all.push(item);
           }
         })
