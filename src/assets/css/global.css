@@ -27,7 +27,6 @@ ul{
 .el-menu-item.is-active {
     background-color: #24273d !important;
     color: #fff;
-    
 }
 
 .el-dialog__body {

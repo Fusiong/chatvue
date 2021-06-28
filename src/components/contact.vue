@@ -85,7 +85,7 @@
       width="30%"
       center
     >
-      <div style="text-align:center display:inline">
+      <div style="text-align:center;display:inline;overflow:auto">
         <el-input
           v-model="addfriend"
           placeholder="请输入用户昵称"
@@ -273,7 +273,6 @@ export default {
     return {
       Allfriend: this.$store.getters.getAllfriends,
       state: "",
-      chating: "",
       chatboolean: true,
       tximg: this.$store.getters.getavatarImg,
       inputadvice: [],
@@ -522,6 +521,7 @@ export default {
         let item = [];
         for (let items of Allfriend) {
           item = items;
+          item.value=items.realName;
           this.inputadvice.push(item);
         }
       }
@@ -549,17 +549,21 @@ export default {
     },
 
     querySearchAsync(queryString, cb) {
+ 
       let inputadvice = this.inputadvice;
+  
       let results = queryString
         ? inputadvice.filter(this.createStateFilter(queryString))
-        : allbook;
+        : inputadvice;
+      
+      
       cb(results);
     },
 
     createStateFilter(queryString) {
-      return (inputadvice) => {
+      return (state) => {
         return (
-          inputadvice.realName
+          state.realName
             .toLowerCase()
             .indexOf(queryString.toLowerCase()) != -1
         );
@@ -569,14 +573,14 @@ export default {
     handleSelect(item) {
       this.setContact(item);
       let number = this.Allfriend.indexOf(item) + 1;
-      window.console.log(number);
+  
       this.navselected = number.toString();
     },
     handleOpen(key, keyPath) {
-      window.console.log(key, keyPath);
+    
     },
     handleClose(key, keyPath) {
-      window.console.log(key, keyPath);
+      
     },
     gochat() {
       this.chatboolean = true;
@@ -648,7 +652,7 @@ export default {
       this.$message.success("已删除该好友申请");
     },
     axiosdelete(addfriend) {
-      window.console.log(addfriend);
+  
       let url =
         "http://115.159.156.211:8081/friendApplication/deleteFriendApplication/" +
         addfriend.id +

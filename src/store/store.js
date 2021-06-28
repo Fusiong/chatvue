@@ -11,7 +11,6 @@ const store =new Vuex.Store({
         realName:"",
         username:"",
         password:"",
-        friend:"",
         Allfriends:[],
         Sessionmes:[],
         history:[],
@@ -24,7 +23,7 @@ const store =new Vuex.Store({
         updateid(state,id){
             state.id=id;
             sessionStorage.setItem('id',id);
-            sessionStorage.setItem('friend',"http://115.159.156.211:8081/friend/getAllFriend/"+id);
+           
         },
         updateName(state,realName){
             state.realName=realName;
@@ -56,7 +55,6 @@ const store =new Vuex.Store({
         getavatarImg:(state)=>state.avatarImg,
         getid:(state)=>state.id,
         getrealName:(state)=>state.realName,
-        getfriend:(state)=>state.friend,
         getAllfriends:(state)=>state.Allfriends,
         getSessionmes:(state)=>state.Sessionmes,
         getusername:(state)=>state.username,

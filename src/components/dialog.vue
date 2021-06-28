@@ -86,7 +86,7 @@
         <div v-if="oldhistory.length && contact">
           <div v-for="(msg, i) in oldhistory" :key="i">
             <div style="text-align: center">
-              <span v-if="i % 10 == 0">{{ msg.createTime }}</span>
+              <span v-if="i%10==0">{{ msg.createTime }}</span>
             </div>
             <div class="leftmessage" v-if="msg.fromId == contact.id">
               <div class="leftavatar">
@@ -182,9 +182,6 @@ export default {
   mounted() {
     this.handler();
   },
-  update(){
-    
-  },
   created() {
     document.addEventListener("keydown", this.keyEnter, false);
   },
@@ -217,7 +214,7 @@ export default {
         this.socket = new WebSocket(this.path + this.$store.getters.getid);
         // 监听socket错误信息
         this.socket.onopen = function () {
-          window.console.log("连接成功");
+   
         };
         this.socket.onerror = this.error;
         // 监听socket消息
@@ -291,7 +288,7 @@ export default {
       } else if (msglist.fromId != this.$store.getters.getid) {
         msglist.only = [msglist.fromId, this.$store.getters.getid];
       }
-      window.console.log(msglist);
+ 
       this.$store.commit("updateSessionmes", msglist);
       setTimeout(()=>{
       this.ScrollToBottom();
@@ -371,6 +368,7 @@ export default {
   destroyed() {
     document.removeEventListener("keydown", this.keyEnter, false);
   },
+ 
 };
 </script>
 

@@ -95,7 +95,7 @@ export default {
       }
     },
     open: function () {
-      window.console.log("socket连接成功");
+
     },
     error: function () {
       window.console.log("连接错误");
@@ -108,7 +108,6 @@ export default {
           this.$message.error("输入信息错误");
           break;
         case 1:
-          window.console.log(message.Data);
           this.$store.commit("updateimg", message.Data.avatarImg);
           this.$store.commit("updateid", message.Data.id);
           this.$store.commit("updateName", message.Data.realName);
@@ -151,7 +150,7 @@ export default {
       this.socket.send(JSON.stringify(msg));
     },
     close: function () {
-      window.console.log("socket已经关闭");
+     
      window.onbeforeunload = function() {
         this.socket.close();
     }

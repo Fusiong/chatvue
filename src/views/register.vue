@@ -119,13 +119,13 @@ export default {
       }
     },
     open: function () {
-      window.console.log("socket连接成功");
+
     },
     error: function () {
       window.console.log("连接错误");
     },
     getMessage: function (msg) {
-      window.console.log(msg);
+ 
       let message = JSON.parse(msg.data);
       switch (message.result) {
         case 0:
@@ -151,7 +151,7 @@ export default {
       this.socket.send(JSON.stringify(msg));
     },
     close: function () {
-      window.console.log("socket已经关闭");
+ 
     },
   },
 };
