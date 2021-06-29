@@ -101,6 +101,7 @@ export default {
         userName: this.loginForm.username,
         passWord: this.loginForm.password,
       };
+       window.console.log(msg);
       this.socket.send(JSON.stringify(msg));
     },
     init: function () {
@@ -125,18 +126,19 @@ export default {
       window.console.log("连接错误");
     },
     getMessage: function (msg) {
- 
+
       let message = JSON.parse(msg.data);
+      window.console.log(message);
+      
       switch (message.result) {
         case 0:
           this.$message("用户名存在！");
           break;
         case 1:
+          this.$message("注册成功");
           setTimeout(() => {
-            this.$message("注册成功");
             this.$router.push("/login");
-          }, 4000);
-        
+          }, 1000);
           break;
         case 2:
           this.$message("输入信息错误！");
@@ -148,6 +150,7 @@ export default {
         userName: this.loginForm.username,
         passWord: this.loginForm.password,
       };
+
       this.socket.send(JSON.stringify(msg));
     },
     close: function () {

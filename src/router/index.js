@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import login from '../views/login.vue'
-import Regsiter from '../views/register.vue'
+import register from '../views/register.vue'
 import Chat from '../views/chat.vue'
 
 
@@ -19,7 +19,7 @@ const routes = [
   {
     path: '/register',
     name: "register",
-    component: Regsiter
+    component: register
   },
   {
     path: '/chat',
@@ -35,7 +35,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
 
-  if (to.name == 'login') {
+  if (to.name == 'login'||to.name=='register') {
     next();
     return;
   }
